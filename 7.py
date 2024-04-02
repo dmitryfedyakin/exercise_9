@@ -14,26 +14,30 @@ class TrafficLight:
     '''
     Initializing current and previous signals.
     '''
-    self.current_signal = 'green'
-    self.previous_signal = 'yellow'
+    self.current_signal = TrafficLight.permissible_values[0]
+    self.previous_signal = TrafficLight.permissible_values[1]
 
   def next_signal(self):
     '''
     Get the next signal.
     '''
-    if self.current_signal == 'green':
-      self.previous_signal = 'green'
-      self.current_signal = 'yellow'
-    elif self.current_signal == 'yellow':
-      if self.previous_signal == 'green':
-        self.previous_signal = 'yellow'
-        self.current_signal = 'red'
+    green = TrafficLight.permissible_values[0]
+    yellow = TrafficLight.permissible_values[1]
+    red = TrafficLight.permissible_values[2]
+
+    if self.current_signal == green:
+      self.previous_signal = green
+      self.current_signal = yellow
+    elif self.current_signal == yellow:
+      if self.previous_signal == green:
+        self.previous_signal = yellow
+        self.current_signal = red
       else:
-        self.previous_signal = 'yellow'
-        self.current_signal = 'green'
-    elif self.current_signal == 'red':
-      self.previous_signal = 'red'
-      self.current_signal = 'yellow'
+        self.previous_signal = yellow
+        self.current_signal = green
+    elif self.current_signal == red:
+      self.previous_signal = red
+      self.current_signal = yellow
 
   def __str__(self):
     '''
